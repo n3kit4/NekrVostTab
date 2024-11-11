@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import platforms.TelegramBot;
 
 public class Main {
-    // Инициализация логера
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -15,10 +14,8 @@ public class Main {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new TelegramBot());
 
-            // Сообщение об успешном запуске
             logger.info("Бот успешно запущен и готов к приему сообщений!");
         } catch (TelegramApiException e) {
-            // Логирование ошибки запуска бота
             logger.error("Ошибка при запуске бота: ", e);
         }
     }

@@ -12,10 +12,8 @@ public class RequestHandlerTelegram implements RequestHandler {
             text = "Бот успешно перезапущен. Отправь любое сообщение";
         }
 
-        // Создаем ответ, адаптированный для Telegram
         Response response = new Response(text);
 
-        // Используем OutputWriter для вывода ответа
         outputWriter.write(response);
     }
 }
