@@ -4,10 +4,9 @@ public class RequestHandlerTelegram implements RequestHandler {
 
     @Override
     public void handle(Request request, OutputWriter outputWriter) {
-        // Получаем текст сообщения
         String text = request.getMessage();
 
-        // Проверяем, является ли сообщение командой /start
+        // Проверка на команду start
         if (text.equals("/start")) {
             text = "Бот успешно перезапущен. Отправь любое сообщение";
         }

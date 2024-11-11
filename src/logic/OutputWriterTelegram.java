@@ -13,8 +13,7 @@ public class OutputWriterTelegram implements OutputWriter {
 
     @Override
     public void write(Response response) {
-        // Получаем текст из объекта Response
         String text = response.getMessage();
-        bot.sendMessage(chatId, text);  // Отправляем сообщение через TelegramBot
+        bot.sendMessage(chatId, text);
     }
 }
