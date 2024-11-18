@@ -1,3 +1,5 @@
-target/classes/config.properties
-target/classes/main/resources/config.properties
+target/
+out/
+.idea/
+*.iml
 src/main/resources/config.properties

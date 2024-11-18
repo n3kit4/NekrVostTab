@@ -1,6 +1,5 @@
-package platforms;
+package platforms.telegram;
 
-import logic.OutputWriterTelegram;
 import logic.Request;
 import logic.RequestHandlerTelegram;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;

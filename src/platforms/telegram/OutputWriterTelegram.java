@@ -1,6 +1,7 @@
-package logic;
+package platforms.telegram;
 
-import platforms.TelegramBot;
+import logic.OutputWriter;
+import logic.Response;
 
 public class OutputWriterTelegram implements OutputWriter {
     private final TelegramBot bot;

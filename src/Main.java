@@ -3,7 +3,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import platforms.TelegramBot;
+import platforms.telegram.TelegramBot;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);

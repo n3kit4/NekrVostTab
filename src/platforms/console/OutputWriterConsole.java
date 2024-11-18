@@ -1,4 +1,7 @@
-package logic;
+package platforms.console;
+
+import logic.OutputWriter;
+import logic.Response;
 
 public class OutputWriterConsole implements OutputWriter {
     @Override

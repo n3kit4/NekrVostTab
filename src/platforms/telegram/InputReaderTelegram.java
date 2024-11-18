@@ -1,4 +1,4 @@
-package platforms;
+package platforms.telegram;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 

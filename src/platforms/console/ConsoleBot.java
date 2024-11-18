@@ -1,6 +1,8 @@
-package platforms;
+package platforms.console;
 
 import logic.*;
+import platforms.Bot;
+import platforms.InputReader;
 
 public class ConsoleBot implements Bot {
     private final InputReader inputReader;
