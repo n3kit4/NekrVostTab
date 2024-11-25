@@ -1,7 +1,6 @@
 package platforms.console;
 
 import logic.Request;
-import platforms.InputReader;
 
 import java.util.Scanner;
 

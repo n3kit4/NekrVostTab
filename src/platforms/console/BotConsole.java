@@ -2,18 +2,16 @@ package platforms.console;
 
 import logic.*;
 import platforms.Bot;
-import platforms.InputReader;
 
-public class ConsoleBot implements Bot {
+public class BotConsole implements Bot {
     private final InputReader inputReader;
-    //private final InputReader inputReader = new InputReaderConsole();
     private final OutputWriter outputWriter;
     private final RequestHandler requestHandler;
 
-    public ConsoleBot() { // конструктор по умолчанию
-        this.inputReader = new InputReaderConsole();
-        this.outputWriter = new OutputWriterConsole();
-        this.requestHandler = new RequestHandlerConsole();
+    public BotConsole(InputReader inputReader, RequestHandler requestHandler, OutputWriter outputWriter) {
+        this.inputReader = inputReader;
+        this.requestHandler = requestHandler;
+        this.outputWriter = outputWriter;
     }
 
     @Override

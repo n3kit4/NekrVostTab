@@ -1,10 +1,11 @@
 package logic;
 
-public class RequestHandlerConsole implements RequestHandler {
+public class RequestHandlerEcho implements RequestHandler{
+
     @Override
     public void handle(Request request, OutputWriter writer) {
         String message = request.getMessage();
-        Response response = new Response("Echo: " + message);
+        Response response = new Response(message);
         writer.write(response);
     }
 }
