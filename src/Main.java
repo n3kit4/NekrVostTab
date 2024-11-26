@@ -57,3 +57,5 @@ public class Main {
         }
     }
 }
+
+//научить вести диалог с пользователем; pattern: state, commands
