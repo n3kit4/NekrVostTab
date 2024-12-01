@@ -2,4 +2,4 @@ target/
 out/
 .idea/
 *.iml
-src/resources/config.properties
+src/main/resources/config.properties
