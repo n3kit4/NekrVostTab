@@ -45,11 +45,12 @@ public class BotTelegram extends TelegramLongPollingBot implements Bot {
 
     @Override
     public void startBot() {
+        System.out.println("TG Bot started successfully!");
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(this);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            System.err.println("Error:" + e.getMessage());
         }
     }
 }

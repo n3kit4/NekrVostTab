@@ -1,4 +1,6 @@
-package logic;
+package logic.command;
+
+import logic.Request;
 
 public interface Command {
     String getCommandPattern();
