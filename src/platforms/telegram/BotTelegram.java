@@ -37,7 +37,9 @@ public class BotTelegram extends TelegramLongPollingBot implements Bot {
             String message = update.getMessage().getText();
             long chatID = update.getMessage().getChatId();
 
-            Request request = new Request(message);
+            System.out.println("Received message from chatId: " + chatID + ", message: " + message);
+
+            Request request = new Request(message, chatID);
             OutputWriterTelegram writer = new OutputWriterTelegram(this, chatID);
             requestHandler.handle(request, writer);
         }

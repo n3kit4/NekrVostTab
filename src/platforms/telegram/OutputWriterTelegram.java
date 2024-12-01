@@ -23,11 +23,7 @@ public class OutputWriterTelegram implements OutputWriter {
     public void write(Response response) {
         String text = response.getMessage();
         try {
-            bot.execute(
-                    SendMessage.builder()
-                            .chatId(chatId.toString())
-                            .text(text)
-                            .build());
+            bot.execute(SendMessage.builder().chatId(chatId.toString()).text(text).build());
         } catch (TelegramApiException ex) {
             logger.error("Failed to send message to chat ID: " + chatId, ex);
         }

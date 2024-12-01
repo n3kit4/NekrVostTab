@@ -16,7 +16,7 @@ public class BotConsole implements Bot {
 
     @Override
     public void startBot() {
-        System.out.println("Welcome to Echo Bot!");
+        System.out.println("Console Bot started successfully!");
         while (true) {
             Request request = inputReader.read();
             requestHandler.handle(request, outputWriter);

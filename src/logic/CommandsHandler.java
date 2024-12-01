@@ -12,11 +12,11 @@ public class CommandsHandler {
                 return new Response("Привет! Вас приветствует UrFUCoin бот. Я пока ещё маленький, но скоро стану большим и крутым!");
 
             case "/balance":
-                valueS = "Ваш текущий баланс: " + tapper.getBalance() + " монет.";
+                valueS = "Ваш текущий баланс: " + tapper.getBalance(request.getChatId()) + " монет.";
                 return new Response(valueS);
 
             case "/tap":
-                tapper.incrementBalance(); // Увеличиваем баланс на 1
+                tapper.incrementBalance(request.getChatId()); // Увеличиваем баланс на 1
                 valueS = "Ваш баланс пополнился на 1 монету!";
                 return new Response(valueS);
 
