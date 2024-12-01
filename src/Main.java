@@ -1,4 +1,3 @@
-import logic.RequestHandlerEcho;
 import logic.RequestHandlerCoin;
 import platforms.console.BotConsole;
 import platforms.console.InputReaderConsole;
