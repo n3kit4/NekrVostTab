@@ -9,13 +9,14 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Main {
-
     public static void main(String[] args) {
         // Создание объектов для работы
         InputReaderConsole inputReader = new InputReaderConsole();
         OutputWriterConsole outputWriter = new OutputWriterConsole();
-        //RequestHandlerEcho requestHandler = new RequestHandlerEcho();
-        RequestHandlerCoin requestHandler = new RequestHandlerCoin();
+
+        // Создаем два разных экземпляра RequestHandler с отдельными Tapper
+        RequestHandlerCoin requestHandlerConsole = new RequestHandlerCoin(); // Для консоли
+        RequestHandlerCoin requestHandlerTelegram = new RequestHandlerCoin(); // Для Telegram
 
         // Пытаемся загрузить конфигурацию и запустить Telegram-бота
         try {
@@ -23,7 +24,7 @@ public class Main {
             String name = properties.getProperty("bot.username");
             String token = properties.getProperty("bot.token");
 
-            BotTelegram botTelegram = new BotTelegram(token, name, requestHandler);
+            BotTelegram botTelegram = new BotTelegram(token, name, requestHandlerTelegram);
             Thread telegramBotThread = new Thread(botTelegram::startBot, "TelegramBotThread");
             telegramBotThread.start();
         } catch (IOException ex) {
@@ -31,8 +32,8 @@ public class Main {
             System.err.println("Console bot continues to run.");
         }
 
-        // Создание и запуск консольного бота
-        BotConsole consoleBot = new BotConsole(inputReader, requestHandler, outputWriter);
+        // Создание и запуск консольного бота с отдельным обработчиком
+        BotConsole consoleBot = new BotConsole(inputReader, requestHandlerConsole, outputWriter);
         Thread consoleBotThread = new Thread(consoleBot::startBot, "ConsoleBotThread");
         consoleBotThread.start();
     }
