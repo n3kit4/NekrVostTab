@@ -1,4 +1,5 @@
 import logic.RequestHandlerEcho;
+import logic.RequestHandlerCoin;
 import platforms.console.BotConsole;
 import platforms.console.InputReaderConsole;
 import platforms.console.OutputWriterConsole;
@@ -14,7 +15,8 @@ public class Main {
         // Создание объектов для работы
         InputReaderConsole inputReader = new InputReaderConsole();
         OutputWriterConsole outputWriter = new OutputWriterConsole();
-        RequestHandlerEcho requestHandler = new RequestHandlerEcho();
+        //RequestHandlerEcho requestHandler = new RequestHandlerEcho();
+        RequestHandlerCoin requestHandler = new RequestHandlerCoin();
 
         // Пытаемся загрузить конфигурацию и запустить Telegram-бота
         try {
