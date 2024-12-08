@@ -1,23 +1,38 @@
-import logic.RequestHandlerCoin;
-import platforms.console.BotConsole;
-import platforms.console.InputReaderConsole;
-import platforms.console.OutputWriterConsole;
-import platforms.telegram.BotTelegram;
+import logic.*;
+import logic.command.*;
+import platforms.console.*;
+import platforms.telegram.*;
+import logic.balance.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Создание объектов для работы
-        long consoleChatId = 12345; // Фиксированный chatId для консольного бота
+        // Создаем DAO
+        BalanceDAO balanceDAO = new BalanceDAOImpl();
+
+        // Создание сервисов
+        TapperService tapperService = new TapperService(balanceDAO);
+
+        // Создание списка с объектами команд
+        List<Command> commands = Arrays.asList(
+                new CommandStart(),
+                new CommandBalance(tapperService),
+                new CommandTap(tapperService),
+                new CommandHelp()
+        );
+
+        // Создание и запуск ботов
+        long consoleChatId = 12345;
         InputReaderConsole inputReader = new InputReaderConsole(consoleChatId);
         OutputWriterConsole outputWriter = new OutputWriterConsole();
-        RequestHandlerCoin requestHandler = new RequestHandlerCoin();
+        RequestHandlerCoin requestHandler = new RequestHandlerCoin(new CommandsHandler(commands, balanceDAO));
 
-        // Пытаемся загрузить конфигурацию и запустить Telegram-бота
         try {
             Properties properties = loadConfig();
             String name = properties.getProperty("bot.username");
@@ -31,7 +46,6 @@ public class Main {
             System.err.println("Console bot continues to run.");
         }
 
-        // Создание и запуск консольного бота
         BotConsole consoleBot = new BotConsole(inputReader, requestHandler, outputWriter);
         Thread consoleBotThread = new Thread(consoleBot::startBot, "ConsoleBotThread");
         consoleBotThread.start();
@@ -47,6 +61,4 @@ public class Main {
         }
         return properties;
     }
-
-    //создать список с объектами на каждую команду и передавать в конструктор commandshandler
 }

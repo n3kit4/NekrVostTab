@@ -3,12 +3,13 @@ package logic.command;
 import logic.Request;
 import logic.Response;
 
-import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public interface Command {
-    Pattern getCommandPattern(); //return "/start"
-    // сделать поле, в котором компиллируем регулярку, передаём в гет... Pattern.compile()
+    // Поле для хранения скомпилированной регулярки
+    Pattern commandPattern = Pattern.compile("/start|/balance|/tap|/help");
+
+    Pattern getCommandPattern();
     Response executeCommand(Request request, Matcher matcher);
 }

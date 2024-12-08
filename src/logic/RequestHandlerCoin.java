@@ -1,9 +1,11 @@
 package logic;
 
 public class RequestHandlerCoin implements RequestHandler {
+    private final CommandsHandler commandsHandler;
 
-    CommandsHandler commandsHandler = new CommandsHandler();
-    //private final + конструктор
+    public RequestHandlerCoin(CommandsHandler commandsHandler) {
+        this.commandsHandler = commandsHandler;
+    }
 
     @Override
     public void handle(Request request, OutputWriter writer) {

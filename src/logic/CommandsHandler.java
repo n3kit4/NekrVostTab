@@ -1,17 +1,19 @@
 package logic;
 
+import logic.balance.BalanceDAO;
 import logic.command.Command;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandsHandler {
-    private final TapperService tapperService = new TapperService(); // Создаем объект для управления балансом
+    private final TapperService tapperService;
     private final List<Command> commands;
 
-    public CommandsHandler(List<Command> commands) {
+    // Конструктор принимает List<Command> и BalanceDAO
+    public CommandsHandler(List<Command> commands, BalanceDAO balanceDAO) {
         this.commands = commands;
+        this.tapperService = new TapperService(balanceDAO); // Передаем BalanceDAO в TapperService
     }
 
     public Response processRequest(Request request) {
@@ -26,27 +28,5 @@ public class CommandsHandler {
         }
 
         return new Response("Неизвестная команда, введите /help для получения списка доступных команд.");
-
-        /*switch (message) {
-            case "/start":
-                return new Response("Привет! Вас приветствует UrFUCoin бот. Я пока ещё маленький, но скоро стану большим и крутым!");
-
-            case "/balance":
-                valueS = "Ваш текущий баланс: " + tapper.getBalance(request.getChatId()) + " монет.";
-                return new Response(valueS);
-
-            case "/tap":
-                tapper.incrementBalance(request.getChatId()); // Увеличиваем баланс на 1
-                valueS = "Ваш баланс пополнился на 1 монету!";
-                return new Response(valueS);
-
-            case "/help":
-                return new Response("Доступные команды: /start, /balance, /tap, /help");
-
-            default:
-                return new Response("Неизвестная команда, введите /help для получения списка доступных команд.");
-        }*/
     }
-
-    // можно новый свитч
 }

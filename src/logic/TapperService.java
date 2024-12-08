@@ -1,21 +1,28 @@
 package logic;
 
-import java.util.HashMap;
-import java.util.Map;
+import logic.balance.BalanceDAO;
 
 public class TapperService {
-    private final Map<Long, Integer> userBalances = new HashMap<>(); // Храним баланс для каждого chatId
+    private final BalanceDAO balanceDAO; // Зависимость от BalanceDAO
 
-    // Метод для получения баланса пользователя по chatId
-    public int getBalance(long chatId) {
-        return userBalances.getOrDefault(chatId, 0); // Если баланс не найден, возвращаем 0
+    // Конструктор для инициализации
+    public TapperService(BalanceDAO balanceDAO) {
+        this.balanceDAO = balanceDAO;
     }
 
-    // Метод для увеличения баланса пользователя по chatId
+    // Метод для получения баланса пользователя
+    public int getBalance(long chatId) {
+        return balanceDAO.getBalance(chatId);
+    }
+
+    // Метод для увеличения баланса пользователя
     public void incrementBalance(long chatId) {
-        userBalances.put(chatId, userBalances.getOrDefault(chatId, 0) + 1);
+        int currentBalance = balanceDAO.getBalance(chatId);
+        balanceDAO.setBalance(chatId, currentBalance + 1);
+    }
+
+    // Метод для проверки существования пользователя
+    public boolean exists(long chatId) {
+        return balanceDAO.exists(chatId);
     }
 }
-
-// создать DAO: получение баланса, сохранение баланса, проверка существования баланса пользователя
-// для него ввести интерфейс и реализацию с map
