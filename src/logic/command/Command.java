@@ -1,10 +1,14 @@
 package logic.command;
 
 import logic.Request;
+import logic.Response;
+
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public interface Command {
-    String getCommandPattern();
-    void executeCommand(Request request);
+    Pattern getCommandPattern(); //return "/start"
+    // сделать поле, в котором компиллируем регулярку, передаём в гет... Pattern.compile()
+    Response executeCommand(Request request, Matcher matcher);
 }
-
-// создаём объекты команд в main, затем в requestHandler новый, при обработке реквеста перебираем команды

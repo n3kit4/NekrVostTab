@@ -3,7 +3,7 @@ package logic;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Tapper {
+public class TapperService {
     private final Map<Long, Integer> userBalances = new HashMap<>(); // Храним баланс для каждого chatId
 
     // Метод для получения баланса пользователя по chatId
@@ -16,3 +16,6 @@ public class Tapper {
         userBalances.put(chatId, userBalances.getOrDefault(chatId, 0) + 1);
     }
 }
+
+// создать DAO: получение баланса, сохранение баланса, проверка существования баланса пользователя
+// для него ввести интерфейс и реализацию с map

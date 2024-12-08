@@ -47,4 +47,6 @@ public class Main {
         }
         return properties;
     }
+
+    //создать список с объектами на каждую команду и передавать в конструктор commandshandler
 }
