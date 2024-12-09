@@ -1,8 +1,9 @@
 import logic.*;
 import logic.command.*;
+import logic.services.TapperService;
 import platforms.console.*;
 import platforms.telegram.*;
-import logic.balance.*;
+import logic.dao.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,3 +63,5 @@ public class Main {
         return properties;
     }
 }
+
+// подключить базу данных SQL lite, создать новое ДАО для баланса и работы с БД

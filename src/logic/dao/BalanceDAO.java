@@ -1,4 +1,4 @@
-package logic.balance;
+package logic.dao;
 
 public interface BalanceDAO {
     int getBalance(long chatId); // Получить баланс

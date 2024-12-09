@@ -2,7 +2,7 @@ package logic.command;
 
 import logic.Request;
 import logic.Response;
-import logic.TapperService;
+import logic.services.TapperService;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,6 +1,6 @@
-package logic;
+package logic.services;
 
-import logic.balance.BalanceDAO;
+import logic.dao.BalanceDAO;
 
 public class TapperService {
     private final BalanceDAO balanceDAO; // Зависимость от BalanceDAO

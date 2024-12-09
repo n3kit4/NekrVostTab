@@ -1,19 +1,17 @@
 package logic;
 
-import logic.balance.BalanceDAO;
+import logic.dao.BalanceDAO;
 import logic.command.Command;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandsHandler {
-    private final TapperService tapperService;
     private final List<Command> commands;
 
     // Конструктор принимает List<Command> и BalanceDAO
     public CommandsHandler(List<Command> commands, BalanceDAO balanceDAO) {
         this.commands = commands;
-        this.tapperService = new TapperService(balanceDAO); // Передаем BalanceDAO в TapperService
     }
 
     public Response processRequest(Request request) {

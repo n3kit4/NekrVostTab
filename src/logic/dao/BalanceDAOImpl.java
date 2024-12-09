@@ -1,4 +1,4 @@
-package logic.balance;
+package logic.dao;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ public class BalanceDAOImpl implements BalanceDAO {
 
     @Override
     public int getBalance(long chatId) {
-        return balances.getOrDefault(chatId, 0); // Возвращаем 0, если баланса нет
+        return balances.computeIfAbsent(chatId, k -> 0); // Возвращаем 0, если баланса нет
     }
 
     @Override
@@ -20,4 +20,6 @@ public class BalanceDAOImpl implements BalanceDAO {
     public boolean exists(long chatId) {
         return balances.containsKey(chatId); // Проверяем, существует ли баланс
     }
+
+    //
 }
