@@ -20,6 +20,4 @@ public class BalanceDAOImpl implements BalanceDAO {
     public boolean exists(long chatId) {
         return balances.containsKey(chatId); // Проверяем, существует ли баланс
     }
-
-    //
 }
