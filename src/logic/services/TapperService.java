@@ -17,12 +17,7 @@ public class TapperService {
 
     // Метод для увеличения баланса пользователя
     public void incrementBalance(long chatId) {
-        int currentBalance = balanceDAO.getBalance(chatId);
-        balanceDAO.setBalance(chatId, currentBalance + 1);
-    }
-
-    // Метод для проверки существования пользователя
-    public boolean exists(long chatId) {
-        return balanceDAO.exists(chatId);
+        int currentBalance = balanceDAO.getBalance(chatId); // Получаем текущий баланс
+        balanceDAO.setBalance(chatId, currentBalance + 1); // Увеличиваем на 1 и сохраняем
     }
 }

@@ -22,7 +22,8 @@ public class CommandTap implements Command {
 
     @Override
     public Response executeCommand(Request request, Matcher matcher) {
-        tapperService.incrementBalance(request.getChatId());
+        long chatId = request.getChatId();
+        tapperService.incrementBalance(chatId);
         return new Response("Ваш баланс пополнился на 1 монету!");
     }
 }

@@ -10,7 +10,7 @@ public class CommandsHandler {
     private final List<Command> commands;
 
     // Конструктор принимает List<Command> и BalanceDAO
-    public CommandsHandler(List<Command> commands, BalanceDAO balanceDAO) {
+    public CommandsHandler(List<Command> commands) {
         this.commands = commands;
     }
 

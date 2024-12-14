@@ -3,7 +3,7 @@ package logic.dao;
 import java.util.Map;
 import java.util.HashMap;
 
-public class BalanceDAOImpl implements BalanceDAO {
+public class BalanceDAOHashMap implements BalanceDAO {
     private final Map<Long, Integer> balances = new HashMap<>();
 
     @Override

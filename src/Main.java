@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Создаем DAO
-        BalanceDAO balanceDAO = new BalanceDAOImpl();
+        BalanceDAO balanceDAO = new BalanceDAOSQL();
 
         // Создание сервисов
         TapperService tapperService = new TapperService(balanceDAO);
@@ -32,7 +32,7 @@ public class Main {
         long consoleChatId = 12345;
         InputReaderConsole inputReader = new InputReaderConsole(consoleChatId);
         OutputWriterConsole outputWriter = new OutputWriterConsole();
-        RequestHandlerCoin requestHandler = new RequestHandlerCoin(new CommandsHandler(commands, balanceDAO));
+        RequestHandlerCoin requestHandler = new RequestHandlerCoin(new CommandsHandler(commands));
 
         try {
             Properties properties = loadConfig();
@@ -63,5 +63,3 @@ public class Main {
         return properties;
     }
 }
-
-// подключить базу данных SQL lite, создать новое ДАО для баланса и работы с БД
